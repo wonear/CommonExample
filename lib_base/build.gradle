@@ -1,12 +1,24 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
+
+//推送到Bintray配置
+publish {
+    repoName = 'maven'
+    userOrg = "wonear"
+    groupId = "com.wonear"
+    artifactId = 'common'
+    publishVersion = "0.1.0" //版本号
+    desc = "a simple utils tool" //描述，选填
+    website = "https://github.com/wonear/CommonExample.git"
+}
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 10
+        versionName "0.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
@@ -20,9 +32,6 @@ android {
             minifyEnabled true
             consumerProguardFiles 'proguard-rules.pro'
         }
-    }
-    dataBinding {
-        enabled = true
     }
 }
 
@@ -83,5 +92,6 @@ dependencies {
     api files('libs/x5_sdk.jar')
 
 }
-apply from: "bintrayUpload.gradle"
-//./gradlew bintrayUpload
+
+
+//./gradlew clean build bintrayUpload -PbintrayUser=wonear -PbintrayKey=2a993b8428eee554fce97e1b6009272087ba9ce2 -PdryRun=false

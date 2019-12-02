@@ -4,13 +4,12 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' } //在国内可能下载不了相应文件，可以添加这个阿里云仓库地址，帮助下载
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'
-
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.novoda:bintray-release:0.9.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -22,7 +21,6 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
-
     }
 }
 
