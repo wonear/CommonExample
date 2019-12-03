@@ -1,13 +1,19 @@
 package com.wonear.common.widget;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+
 import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
+
+import com.wonear.common.utils.ContextManager;
 
 /**
  * @author wonear
@@ -140,7 +146,6 @@ public abstract class BaseCustomView extends View {
     }
 
 
-
     /**
      * 重新设置bitmap的大小
      *
@@ -160,6 +165,30 @@ public abstract class BaseCustomView extends View {
                 true);
         return dstbmp;
     }
+
+
+    /**
+     * 获取屏幕宽度
+     *
+     * @return 屏幕宽度
+     */
+    public int getScreenWith(Context context) {
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.widthPixels;
+    }
+
+    /**
+     * 获取屏幕高度，这边拿到的会烧掉状态栏的高度
+     *
+     * @return 屏幕高度
+     */
+    public int getScreenHeight(Context context) {
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        return dm.heightPixels;
+    }
+
 
 //    private void startAnim() {
 //

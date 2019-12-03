@@ -1,6 +1,9 @@
 package com.wonear.common.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 
@@ -8,8 +11,9 @@ public class ViewUtil {
 
     /**
      * 动态设置TextView的右图标
+     *
      * @param textView 控件
-     * @param resId 图标id
+     * @param resId    图标id
      */
     public static void drawableRight(TextView textView, int resId) {
         if (resId == 0) {
@@ -64,5 +68,17 @@ public class ViewUtil {
         }
 
         view.setCompoundDrawables(drawable, null, null, null);
+    }
+
+
+    public static Bitmap drawableToBitmap(Drawable drawable, float width, float height) {
+//        if (drawable instanceof BitmapDrawable) {
+//            return ((BitmapDrawable) drawable).getBitmap();
+//        }
+        Bitmap bitmap = Bitmap.createBitmap(((int) width), ((int) height), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
     }
 }

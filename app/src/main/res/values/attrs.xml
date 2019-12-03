@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AudioLabelView">
+        <attr name="alv_src" format="reference" />
+        <attr name="alv_imageWidth" format="dimension" />
+        <attr name="alv_imageHeight" format="dimension" />
+    </declare-styleable>
+</resources>
